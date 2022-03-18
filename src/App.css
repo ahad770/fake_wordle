@@ -1,3 +1,9 @@
+:root {
+  --not-guessed: #121213;
+  --correct: #6aaa64;
+  --incorrect: #c9b458;
+}
+
 .engine {
   text-align: center;
   background-color: #121213;
@@ -27,7 +33,7 @@
   align-items: center;
   justify-content: center;
   margin: 2px;
-  background-color: #121213;
+  background-color: var(--not-guessed);
   color: white;
   height: 62px;
   width: 62px;

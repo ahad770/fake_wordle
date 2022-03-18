@@ -48,7 +48,7 @@ function App() {
         //console.log(move);
 
         history[row][idx] = temp;
-        console.log(history[row]);
+        //console.log(history[row]);
 
         setHistory(history);
         //console.log(history);
@@ -56,17 +56,17 @@ function App() {
       } else {
 
         const temp = move;
-        console.log(move);
+        //console.log(move);
 
         history[row][idx-1] = temp;
-        console.log(history[row]);
+        //console.log(history[row]);
 
         setHistory(history);
-        console.log(history);
+        //console.log(history);
 
 
         setIdx(idx - 1);
-        console.log(idx);
+        //console.log(idx);
         setDel(false);
       }
     }
@@ -86,6 +86,7 @@ function App() {
         del = {del}
         row = {row}
         setRow = {setRow}
+        history = {history}
       />
     </div>
   );

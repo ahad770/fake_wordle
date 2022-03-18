@@ -1,9 +1,25 @@
 import React from "react";
+import {list_of_words} from "../five_letter_words";
 
 function Keyboard(props) {
+  const handleEnter = () => {
+    if(props.idx === 5){
+      var guess = props.history[props.row].join('');
+      guess = guess.toLowerCase();
+      if(list_of_words.has(guess)){
+        props.setRow(props.row + 1);
+        props.setIdx(0);
+        console.log('valid guess')
+      } else {
+        alert("Invalid Guess, not a word in the set!")
+      }
+    } else {
+      alert("Not enough letters!")
+    }
+  }
+
   return (
     <div>
-      {console.log(props.del)}
       <div className="key_row">
         <button
           className="key"
@@ -111,6 +127,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("A");
+            props.setMove('A');
           }}
         >
           A
@@ -119,6 +136,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("S");
+            props.setMove('S');
           }}
         >
           S
@@ -127,6 +145,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("D");
+            props.setMove('D');
           }}
         >
           D
@@ -135,6 +154,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("F");
+            props.setMove('F');
           }}
         >
           F
@@ -143,6 +163,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("G");
+            props.setMove('G');
           }}
         >
           G
@@ -151,6 +172,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("H");
+            props.setMove('H');
           }}
         >
           H
@@ -159,6 +181,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("J");
+            props.setMove('J');
           }}
         >
           J
@@ -167,6 +190,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("K");
+            props.setMove('K');
           }}
         >
           K
@@ -175,6 +199,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("L");
+            props.setMove('L');
           }}
         >
           L
@@ -185,12 +210,7 @@ function Keyboard(props) {
           className="big_key"
           onClick={() => {
             console.log("Enter");
-            if(props.idx === 5){
-              props.setRow(props.row + 1);
-              props.setIdx(0);
-            } else {
-              alert("Not enough letters!")
-            }
+            handleEnter();
           }}
         >
           ENTER
@@ -199,6 +219,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("Z");
+            props.setMove('Z');
           }}
         >
           Z
@@ -207,6 +228,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("X");
+            props.setMove('X');
           }}
         >
           X
@@ -215,6 +237,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("C");
+            props.setMove('C');
           }}
         >
           C
@@ -223,6 +246,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("V");
+            props.setMove('V');
           }}
         >
           V
@@ -231,6 +255,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("B");
+            props.setMove('B');
           }}
         >
           B
@@ -239,6 +264,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("N");
+            props.setMove('N');
           }}
         >
           N
@@ -247,6 +273,7 @@ function Keyboard(props) {
           className="key"
           onClick={() => {
             console.log("M");
+            props.setMove('M');
           }}
         >
           M
