@@ -5,10 +5,11 @@
 }
 
 .engine {
-  text-align: center;
   background-color: #121213;
-  min-height: 100%;
-  min-width: 100%;
+  text-align: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
@@ -101,4 +102,10 @@
   right: 0;
 }
 
-* {background-color: #121213}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}

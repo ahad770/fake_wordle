@@ -1,7 +1,55 @@
 import React from "react";
 import {list_of_words} from "../five_letter_words";
+import toast from 'react-hot-toast';
 
 function Keyboard(props) {
+  function getFrequency(string) {
+    var freq = {};
+    for (var i=0; i<string.length;i++) {
+        var character = string.charAt(i);
+        if (freq[character]) {
+           freq[character]++;
+        } else {
+           freq[character] = 1;
+        }
+    }
+
+    return freq;
+};
+
+  const updateGuess = (guess) => {
+    if(guess === props.secretWord){
+      const temp = ['#6aaa64', '#6aaa64', '#6aaa64', '#6aaa64', '#6aaa64']
+      props.historyColor[props.row] = temp;
+      props.setHistoryColor(props.historyColor);
+      toast("Splendid!")
+
+    } else {
+      const temp = ['','','','',''];
+      const dic = getFrequency(props.secretWord);
+      const equal = [false, false, false, false, false];
+      for(let i = 0; i < 5; i++){
+        if(guess.charAt(i) === props.secretWord.charAt(i)){
+          dic[guess.charAt(i)]--;
+          temp[i] = '#6aaa64';
+          equal[i] = true;
+        }
+      }
+      for(let i = 0; i < 5; i++){
+        if(guess.charAt(i) in dic && dic[guess.charAt(i)] > 0){
+          dic[guess.charAt(i)]--;
+          temp[i] = '#c9b458';
+        } else {
+          if(!equal[i]) {
+            temp[i] = '#3a3a3c';
+          }
+        }
+      }
+      props.historyColor[props.row] = temp;
+      props.setHistoryColor(props.historyColor);
+    }
+  }
+
   const handleEnter = () => {
     if(props.idx === 5){
       var guess = props.history[props.row].join('');
@@ -10,11 +58,24 @@ function Keyboard(props) {
         props.setRow(props.row + 1);
         props.setIdx(0);
         console.log('valid guess')
+        updateGuess(guess);
+        // Figure which spots have colors
+
       } else {
-        alert("Invalid Guess, not a word in the set!")
+        toast("Invalid Guess, not a word in the set!")
       }
     } else {
-      alert("Not enough letters!")
+      toast("Not enough letters!", {
+        duration: 1000,
+        id: "copy",
+        style: {
+          border: '1px solid #713200',
+          padding: '5px',
+          color: '#713200',
+          marginTop: '80px'
+        }
+      });
+      
     }
   }
 
@@ -27,6 +88,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("Q");
             props.setMove('Q');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           Q
@@ -37,6 +99,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("W");
             props.setMove('W');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           W
@@ -47,6 +110,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("E");
             props.setMove('E');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           E
@@ -57,6 +121,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("R");
             props.setMove('R');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           R
@@ -67,6 +132,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("T");
             props.setMove('T');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           T
@@ -77,6 +143,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("Y");
             props.setMove('Y');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           Y
@@ -87,6 +154,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("U");
             props.setMove('U');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           U
@@ -97,6 +165,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("I");
             props.setMove('I');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           I
@@ -107,6 +176,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("O");
             props.setMove('O');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           O
@@ -117,6 +187,7 @@ function Keyboard(props) {
           onClick={() => {
             //console.log("P");
             props.setMove('P');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           P
@@ -128,6 +199,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("A");
             props.setMove('A');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           A
@@ -137,6 +209,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("S");
             props.setMove('S');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           S
@@ -146,6 +219,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("D");
             props.setMove('D');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           D
@@ -155,6 +229,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("F");
             props.setMove('F');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           F
@@ -164,6 +239,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("G");
             props.setMove('G');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           G
@@ -173,6 +249,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("H");
             props.setMove('H');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           H
@@ -182,6 +259,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("J");
             props.setMove('J');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           J
@@ -191,6 +269,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("K");
             props.setMove('K');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           K
@@ -200,6 +279,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("L");
             props.setMove('L');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           L
@@ -220,6 +300,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("Z");
             props.setMove('Z');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           Z
@@ -229,6 +310,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("X");
             props.setMove('X');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           X
@@ -238,6 +320,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("C");
             props.setMove('C');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           C
@@ -247,6 +330,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("V");
             props.setMove('V');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           V
@@ -256,6 +340,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("B");
             props.setMove('B');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           B
@@ -265,6 +350,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("N");
             props.setMove('N');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           N
@@ -274,6 +360,7 @@ function Keyboard(props) {
           onClick={() => {
             console.log("M");
             props.setMove('M');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           M
@@ -286,6 +373,7 @@ function Keyboard(props) {
 
             props.setDel(true);
             props.setMove('');
+            props.setMoveCounter(props.moveCounter + 1);
           }}
         >
           DELETE
