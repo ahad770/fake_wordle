@@ -33,7 +33,8 @@ const keyColorDic = {
 
 function Keyboard(props) {
   const [keyColor, setKeyColor] = useState(keyColorDic);
-  const [disable, setDisable] = useState(false);
+  const [bigKeyDisable, setBigKeyDisable] = useState(false);
+  //const [disable, setDisable] = useState(false);
 
   function getFrequency(string) {
     var freq = {};
@@ -75,7 +76,9 @@ function Keyboard(props) {
           marginTop: "80px",
         },
       });
-      setDisable(true);
+      //setDisable(true);
+      setBigKeyDisable(true);
+      props.setDisable(true);
     } else {
       const temp = ["", "", "", "", ""];
       const dic = getFrequency(props.secretWord);
@@ -131,7 +134,8 @@ function Keyboard(props) {
           props.setIdx(0);
         } else {
           props.setRow(0);
-          setDisable(true);
+          setBigKeyDisable(true);
+          props.setDisable(true);
           toast(props.secretWord.toUpperCase(), {
             duration: 10000,
             id: "copy",
@@ -173,7 +177,7 @@ function Keyboard(props) {
   };
 
   return (
-    <div>
+    <div className="keyboard">
       <div className="key_row">
         <button
           className="key"
@@ -183,7 +187,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["Q"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           Q
         </button>
@@ -195,7 +200,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["W"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           W
         </button>
@@ -207,7 +213,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["E"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           E
         </button>
@@ -219,7 +226,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["R"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           R
         </button>
@@ -231,7 +239,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["T"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           T
         </button>
@@ -243,7 +252,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["Y"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           Y
         </button>
@@ -255,7 +265,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["U"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           U
         </button>
@@ -267,7 +278,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["I"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           I
         </button>
@@ -279,7 +291,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["O"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           O
         </button>
@@ -291,7 +304,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["P"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           P
         </button>
@@ -304,7 +318,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["A"] }}
-          disabled={disable}
+         //disabled={disable}
+         disabled = {props.disable}
         >
           A
         </button>
@@ -315,7 +330,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["S"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           S
         </button>
@@ -326,7 +342,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["D"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           D
         </button>
@@ -337,7 +354,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["F"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           F
         </button>
@@ -348,7 +366,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["G"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           G
         </button>
@@ -359,7 +378,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["H"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           H
         </button>
@@ -370,7 +390,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["J"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           J
         </button>
@@ -381,7 +402,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["K"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           K
         </button>
@@ -392,7 +414,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["L"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           L
         </button>
@@ -403,7 +426,8 @@ function Keyboard(props) {
           onClick={() => {
             handleEnter();
           }}
-          disabled={disable}
+          //disabled={disable}
+          disabled={bigKeyDisable}
         >
           ENTER
         </button>
@@ -414,7 +438,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["Z"] }}
-          disabled={disable}
+         //disabled={disable}
+         disabled = {props.disable}
         >
           Z
         </button>
@@ -425,7 +450,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["X"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           X
         </button>
@@ -436,7 +462,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["C"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           C
         </button>
@@ -447,7 +474,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["V"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           V
         </button>
@@ -458,7 +486,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["B"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           B
         </button>
@@ -469,7 +498,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["N"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           N
         </button>
@@ -480,7 +510,8 @@ function Keyboard(props) {
             props.setMoveCounter(props.moveCounter + 1);
           }}
           style={{ backgroundColor: keyColor["M"] }}
-          disabled={disable}
+          //disabled={disable}
+          disabled = {props.disable}
         >
           M
         </button>
@@ -490,8 +521,10 @@ function Keyboard(props) {
             props.setDel(true);
             props.setMove("");
             props.setMoveCounter(props.moveCounter + 1);
+            props.setDisable(false);
           }}
-          disabled={disable}
+          //disabled={disable}
+          disabled={bigKeyDisable}
         >
           DELETE
         </button>

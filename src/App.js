@@ -46,8 +46,22 @@ function App() {
   const [idx, setIdx] = useState(0);
   const [row, setRow] = useState(0);
   const [del, setDel] = useState(false);
+  const [disable, setDisable] = useState(false);
+  const [info, setInfo] = useState(false);
 
   const render = useRef(false);
+
+  useEffect(() => {
+    document.title = "Fake Wordle";
+  }, []);
+
+  useEffect(() => {
+    if (idx === 5) {
+      console.log("hi");
+      setDisable(true);
+    }
+  }, [idx]);
+
   useEffect(() => {
     if (render.current === false) {
       console.log(secretWord);
@@ -59,7 +73,7 @@ function App() {
         setHistory(history);
         setIdx(idx + 1);
       } else {
-        if(idx !== 0){
+        if (idx !== 0) {
           const temp = move;
           history[row][idx - 1] = temp;
           setHistory(history);
@@ -72,34 +86,38 @@ function App() {
 
   return (
     <div className="engine">
-      <NavBar />
-      <GameBoard
-        move={move}
-        history={history}
-        setHistory={setHistory}
-        historyColor={historyColor}
-        flipped={flipped}
-        row={row}
-      />
-      <Keyboard
-        moveCounter={moveCounter}
-        setMoveCounter={setMoveCounter}
-        move={move}
-        setMove={setMove}
-        setIdx={setIdx}
-        idx={idx}
-        setDel={setDel}
-        del={del}
-        row={row}
-        setRow={setRow}
-        history={history}
-        secretWord={secretWord}
-        historyColor={historyColor}
-        setHistoryColor={setHistoryColor}
-        flipped={flipped}
-        setFlipped={setFlipped}
-      />
-      <Toaster />
+      <>
+        <NavBar info={info} setInfo={setInfo} />
+        <GameBoard
+          move={move}
+          history={history}
+          setHistory={setHistory}
+          historyColor={historyColor}
+          flipped={flipped}
+          row={row}
+        />
+        <Keyboard
+          moveCounter={moveCounter}
+          setMoveCounter={setMoveCounter}
+          move={move}
+          setMove={setMove}
+          setIdx={setIdx}
+          idx={idx}
+          setDel={setDel}
+          del={del}
+          row={row}
+          setRow={setRow}
+          history={history}
+          secretWord={secretWord}
+          historyColor={historyColor}
+          setHistoryColor={setHistoryColor}
+          flipped={flipped}
+          setFlipped={setFlipped}
+          disable={disable}
+          setDisable={setDisable}
+        />
+        <Toaster />
+      </>
     </div>
   );
 }
